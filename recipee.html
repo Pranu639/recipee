@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Hub - Recipes</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ff6600;
+            padding: 15px 30px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd99;
+        }
+
+        /* Page Title */
+        .page-title {
+            background: #ffdd99;
+            padding: 40px 20px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        /* Recipe Grid */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .recipe-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .recipe-card h3 {
+            margin-top: 10px;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .recipe-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Expandable Recipe Details */
+        .recipe-details {
+            display: none;
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .recipe-details ul, .recipe-details ol {
+            padding-left: 20px;
+        }
+
+        .recipe-details ul {
+            list-style-type: square;
+        }
+
+        .recipe-details ol {
+            list-style-type: decimal;
+        }
+
+        /* Footer */
+        footer {
+            background: #ff6600;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 28px;
+            }
+
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">🍽️ Recipe Hub</div>
+        <ul>
+            <li><a href="https://679cc63e2cbf17009b74cb4a--keen-dragon-991eaf.netlify.app/">Home</a></li>
+            <li><a href="#Recipes">Recipes</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=9962289144">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Title -->
+    <div class="page-title">Explore Our Recipes 🍽️</div>
+
+    <!-- Recipe Grid -->
+    <section class="recipe-grid">
+        <div class="recipe-card" onclick="toggleDetails('recipe1')">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/053/742/252/small_2x/a-bowl-of-pasta-with-a-green-leaf-on-top-the-pasta-is-covered-in-cheese-and-herbs-photo.jpg" alt="Pasta">
+            <h3>Classic Pasta</h3>
+            <div id="recipe1" class="recipe-details">
+                <h4>Ingredients:</h4>
+                <ul>
+                    <li>200g pasta</li>
+                    <li>2 cloves garlic</li>
+                    <li>1 cup tomato sauce</li>
+                    <li>1 tsp olive oil</li>
+                    <li>Salt and pepper to taste</li>
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    <li>Boil pasta according to package instructions.</li>
+                    <li>Heat olive oil in a pan, add garlic, and sauté.</li>
+                    <li>Add tomato sauce and let simmer for 5 minutes.</li>
+                    <li>Mix in cooked pasta, season with salt and pepper.</li>
+                    <li>Serve hot and enjoy!</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="recipe-card" onclick="toggleDetails('recipe2')">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/032/438/868/small_2x/a-stack-of-pancakes-with-sauce-on-top-ai-generated-free-photo.jpg" alt="Pancakes">
+            <h3>Fluffy Pancakes</h3>
+            <div id="recipe2" class="recipe-details">
+                <h4>Ingredients:</h4>
+                <ul>
+                    <li>1 cup flour</li>
+                    <li>1 egg</li>
+                    <li>1 cup milk</li>
+                    <li>1 tbsp sugar</li>
+                    <li>1 tsp baking powder</li>
+                    <li>Pinch of salt</li>
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    <li>Mix flour, sugar, baking powder, and salt.</li>
+                    <li>Beat the egg and mix with milk.</li>
+                    <li>Combine wet and dry ingredients.</li>
+                    <li>Cook on a greased pan until golden brown.</li>
+                    <li>Serve with syrup and enjoy!</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Recipe Hub</p>
+        <p>Follow us on 
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </p>
+        <p>Contact us: geethapranu227@gmail.com</p>
+    </footer>
+
+    <script>
+        function toggleDetails(id) {
+            var details = document.getElementById(id);
+            details.style.display = (details.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
